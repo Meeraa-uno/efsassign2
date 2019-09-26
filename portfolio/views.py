@@ -5,8 +5,6 @@ from .forms import *
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 
-
-
 now = timezone.now()
 def home(request):
    return render(request, 'portfolio/home.html',
@@ -42,10 +40,6 @@ def customer_delete(request, pk):
    customer.delete()
    return redirect('portfolio:customer_list')
 
-@login_required
-def stock_list(request):
-   stocks = Stock.objects.filter(purchase_date__lte=timezone.now())
-   return render(request, 'portfolio/stock_list.html', {'stocks': stocks})
 
 @login_required
 def stock_list(request):
